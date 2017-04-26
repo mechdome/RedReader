@@ -90,10 +90,10 @@
                             android:dependency="@string/pref_appearance_thumbnails_show_key"
                             android:defaultValue="false"/>
 
-        <CheckBoxPreference android:title="@string/pref_appearance_thumbnails_nsfw_show_title"
-                            android:key="@string/pref_appearance_thumbnails_nsfw_show_key"
-                            android:dependency="@string/pref_appearance_thumbnails_show_key"
-                            android:defaultValue="false"/>
+        <!--<CheckBoxPreference android:title="@string/pref_appearance_thumbnails_nsfw_show_title"-->
+                            <!--android:key="@string/pref_appearance_thumbnails_nsfw_show_key"-->
+                            <!--android:dependency="@string/pref_appearance_thumbnails_show_key"-->
+                            <!--android:defaultValue="false"/>-->
 
     </PreferenceCategory>
 

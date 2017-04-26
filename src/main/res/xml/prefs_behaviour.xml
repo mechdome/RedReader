@@ -159,9 +159,9 @@
 
     <PreferenceCategory android:title="@string/pref_behaviour_posts_header">
 
-        <CheckBoxPreference android:title="@string/pref_behaviour_nsfw_title"
-                            android:key="@string/pref_behaviour_nsfw_key"
-                            android:defaultValue="false"/>
+        <!--<CheckBoxPreference android:title="@string/pref_behaviour_nsfw_title"-->
+                            <!--android:key="@string/pref_behaviour_nsfw_key"-->
+                            <!--android:defaultValue="false"/>-->
 
 		<CheckBoxPreference android:title="@string/pref_behaviour_share_permalink_title"
 				android:key="@string/pref_behaviour_share_permalink_key"
