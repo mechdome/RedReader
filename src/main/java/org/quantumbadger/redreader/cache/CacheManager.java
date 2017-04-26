@@ -23,6 +23,8 @@ import android.net.Uri;
 import android.os.Build;
 import android.preference.PreferenceManager;
 import android.util.Log;
+import android.webkit.MimeTypeMap;
+
 import org.quantumbadger.redreader.account.RedditAccount;
 import org.quantumbadger.redreader.activities.BugReportActivity;
 import org.quantumbadger.redreader.common.General;
@@ -89,7 +91,7 @@ public final class CacheManager {
 
 	private Long isCacheFile(final String file) {
 
-		if(!file.endsWith(ext)) return null;
+//		if(!file.endsWith(ext)) return null;
 
 		final String[] fileSplit = file.split("\\.");
 		if(fileSplit.length != 2) return null;
@@ -228,7 +230,8 @@ public final class CacheManager {
 
 					cacheFileId = dbManager.newEntry(request, session, mimetype);
 
-					final File dstFile = new File(location, cacheFileId + ext);
+					final String extension = MimeTypeMap.getSingleton().getExtensionFromMimeType(mimetype);
+					final File dstFile = new File(location, cacheFileId + (extension!=null?"."+extension:ext));
 					General.moveFile(tmpFile, dstFile);
 
 					dbManager.setEntryDone(cacheFileId);
@@ -298,9 +301,11 @@ public final class CacheManager {
 	private File getExistingCacheFile(final long id) {
 		List<File> dirs = getCacheDirs(context);
 		for (File dir : dirs) {
-			final File f = new File(dir, id + ext);
-			if (f.exists())
-				return f;
+			for (String filename : dir.list()) {
+				if (filename.startsWith(id + ".")) {
+					return new File(dir, filename);
+				}
+			}
 		}
 		return null;
 	}
