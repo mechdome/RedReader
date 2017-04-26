@@ -36,6 +36,7 @@ public final class CacheDownload extends PrioritisedCachedThreadPool.Task {
 	private final CacheRequest mInitiator;
 	private final CacheManager manager;
 	private final UUID session;
+	private boolean useJavaBackend = true;
 
 	private volatile boolean mCancelled = false;
 	private static final AtomicBoolean resetUserCredentials = new AtomicBoolean(false);
@@ -60,6 +61,9 @@ public final class CacheDownload extends PrioritisedCachedThreadPool.Task {
 		mRequest = HTTPBackend.getBackend().prepareRequest(
 				initiator.context,
 				new HTTPBackend.RequestDetails(mInitiator.url, mInitiator.postFields));
+		if (mRequest == null) {
+			mCancelled = true;
+		}
 	}
 
 	public synchronized void cancel() {
