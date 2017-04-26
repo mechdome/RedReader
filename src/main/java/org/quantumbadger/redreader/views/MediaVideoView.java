@@ -85,7 +85,7 @@ public class MediaVideoView extends SurfaceView
 					mVideoWidth = mp.getVideoWidth();
 					mVideoHeight = mp.getVideoHeight();
 					if (mVideoWidth != 0 && mVideoHeight != 0) {
-						getHolder().setFixedSize(mVideoWidth, mVideoHeight);
+//						getHolder().setFixedSize(mVideoWidth, mVideoHeight);
 						requestLayout();
 					}
 				}
@@ -136,7 +136,7 @@ public class MediaVideoView extends SurfaceView
 			}
 			if (mVideoWidth != 0 && mVideoHeight != 0) {
 				//Log.i("@@@@", "video size: " + mVideoWidth +"/"+ mVideoHeight);
-				getHolder().setFixedSize(mVideoWidth, mVideoHeight);
+//				getHolder().setFixedSize(mVideoWidth, mVideoHeight);
 				if (mSurfaceWidth == mVideoWidth && mSurfaceHeight == mVideoHeight) {
 					// We didn't actually change the size (it was already at the size
 					// we need), so we won't get a "surface changed" callback, so
