@@ -1,10 +1,7 @@
-RedReader (for Android)
+RedReader (for iOS)
 =======================
 
 An unofficial, open source client for reddit.
-
-![Build Status](https://travis-ci.org/QuantumBadger/RedReader.svg?branch=master)
-[![Translation status](https://hosted.weblate.org/widgets/redreader/-/svg-badge.svg)](https://hosted.weblate.org/engage/redreader/?utm_source=widget)
 
 Features
 --------
@@ -27,21 +24,9 @@ Features
 Downloading
 -----------
 
-RedReader is available for free on the Google Play store:
+RedReader is available for free on the App Play store:
 
-https://play.google.com/store/apps/details?id=org.quantumbadger.redreader
-
-[<img src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png"
-      alt="Get it on Google Play"
-      height="80">](https://play.google.com/store/apps/details?id=org.quantumbadger.redreader)
-
-RedReader can also be found for free on F-Droid:
-
-https://f-droid.org/app/org.quantumbadger.redreader
-
-[<img src="https://f-droid.org/badge/get-it-on.png"
-      alt="Get it on F-Droid"
-      height="80">](https://f-droid.org/app/org.quantumbadger.redreader)
+<a href="https://itunes.apple.com/us/app/redreader-β/id1089788044?mt=8"><img src="https://upload.wikimedia.org/wikipedia/commons/5/5d/Available_on_the_App_Store_%28black%29.png" width="150"></a>
 
 Translating
 -----------
