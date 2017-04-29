@@ -36,7 +36,6 @@ public final class CacheDownload extends PrioritisedCachedThreadPool.Task {
 	private final CacheRequest mInitiator;
 	private final CacheManager manager;
 	private final UUID session;
-	private boolean useJavaBackend = true;
 
 	private volatile boolean mCancelled = false;
 	private static final AtomicBoolean resetUserCredentials = new AtomicBoolean(false);
