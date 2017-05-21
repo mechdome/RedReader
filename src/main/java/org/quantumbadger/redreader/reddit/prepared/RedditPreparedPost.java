@@ -759,9 +759,7 @@ public final class RedditPreparedPost {
 
 				try {
 
-					synchronized(singleImageDecodeLock) {
-						thumbnailCache = cacheFile;
-					}
+					thumbnailCache = cacheFile;
 					if(thumbnailCallback != null) thumbnailCallback.betterThumbnailAvailable(thumbnailCache, usageId);
 
 				} catch (OutOfMemoryError e) {
@@ -779,16 +777,12 @@ public final class RedditPreparedPost {
 	public Bitmap getThumbnail(final ThumbnailLoadedCallback callback, final int usageId) {
 		this.thumbnailCallback = callback;
 		this.usageId = usageId;
-		final Bitmap data;
 		try {
-			if (thumbnailCache != null) {
-				data = BitmapFactory.decodeStream(thumbnailCache.getInputStream());
-				if (data == null) return null;
-				return data;
-			}
-		} catch (IOException e) {
-			e.printStackTrace();
+			return BitmapFactory.decodeStream(thumbnailCache.getInputStream());
+		} catch (Exception e) {
+			Log.e("RedditPreparedPost", "Error loading image from the cache", e);
 		}
+
 		return null;
 	}
 

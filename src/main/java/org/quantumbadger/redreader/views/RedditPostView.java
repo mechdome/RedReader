@@ -279,23 +279,13 @@ public final class RedditPostView extends FlingableItemView implements RedditPre
 			usageId++;
 
 			resetSwipeState();
-			Runnable r = new Runnable()
-			{
+			AndroidApi.UI_THREAD_HANDLER.post(new Runnable() {
 				@Override
-				public void run()
-				{
+				public void run() {
 					final Bitmap thumbnail = data.getThumbnail(RedditPostView.this, usageId);
-
-					AndroidApi.UI_THREAD_HANDLER.post(new Runnable() {
-						@Override
-						public void run() {
-							thumbnailView.setImageBitmap(thumbnail);
-						}
-					});
+					thumbnailView.setImageBitmap(thumbnail);
 				}
-			};
-			new Thread(r).start();
-
+			});
 
 			title.setText(data.src.getTitle());
 			commentsText.setText(String.valueOf(data.src.getSrc().num_comments));
