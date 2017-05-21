@@ -59,6 +59,7 @@ import org.quantumbadger.redreader.views.RedditPostView;
 import org.quantumbadger.redreader.views.bezelmenu.SideToolbarOverlay;
 import org.quantumbadger.redreader.views.bezelmenu.VerticalToolbar;
 
+import java.io.IOException;
 import java.net.URI;
 import java.util.*;
 
@@ -74,7 +75,7 @@ public final class RedditPreparedPost {
 	public final boolean mIsProbablyAnImage;
 
 	// TODO make it possible to turn off in-memory caching when out of memory
-	private volatile Bitmap thumbnailCache = null;
+	private volatile CacheManager.ReadableCacheFile thumbnailCache = null;
 
 	private static final Object singleImageDecodeLock = new Object();
 
@@ -759,14 +760,8 @@ public final class RedditPreparedPost {
 				try {
 
 					synchronized(singleImageDecodeLock) {
-
-						final Bitmap data = BitmapFactory.decodeStream(cacheFile.getInputStream());
-
-						if(data == null) return;
-
-						thumbnailCache = data;
+						thumbnailCache = cacheFile;
 					}
-
 					if(thumbnailCallback != null) thumbnailCallback.betterThumbnailAvailable(thumbnailCache, usageId);
 
 				} catch (OutOfMemoryError e) {
@@ -784,7 +779,17 @@ public final class RedditPreparedPost {
 	public Bitmap getThumbnail(final ThumbnailLoadedCallback callback, final int usageId) {
 		this.thumbnailCallback = callback;
 		this.usageId = usageId;
-		return thumbnailCache;
+		final Bitmap data;
+		try {
+			if (thumbnailCache != null) {
+				data = BitmapFactory.decodeStream(thumbnailCache.getInputStream());
+				if (data == null) return null;
+				return data;
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 	public boolean isSelf() {
@@ -805,7 +810,7 @@ public final class RedditPreparedPost {
 
 	// TODO handle download failure - show red "X" or something
 	public interface ThumbnailLoadedCallback {
-		void betterThumbnailAvailable(Bitmap thumbnail, int usageId);
+		void betterThumbnailAvailable(CacheManager.ReadableCacheFile thumbnail, int usageId);
 	}
 
 	public void markAsRead(final Context context) {

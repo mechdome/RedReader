@@ -51,7 +51,11 @@ public class PreviewView extends android.support.v7.widget.AppCompatImageView {
 
 		// Calculate the desired preview height maintaining the aspect ratio
 		int parentWidth = MeasureSpec.getSize(widthMeasureSpec);
-		int newH = (int)((float)parentWidth * d.getIntrinsicHeight() / d.getIntrinsicWidth());
+		int newH = MeasureSpec.getSize(heightMeasureSpec);;
+		if (d != null){
+			newH = (int)((float)parentWidth * d.getIntrinsicHeight() / d.getIntrinsicWidth());
+		}
+
 
 		int maxHeight = allPostsContainer.getHeight() - postHeight;
 		this.setMeasuredDimension(parentWidth, Math.min(newH, maxHeight));
