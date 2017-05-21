@@ -478,6 +478,8 @@
 
     <string name="pref_about_changelog_key" translatable="false">pref_about_changelog</string>
     <string name="prefs_category_about">About</string>
+	<string name="about_mechdome_redreader">About MechDome</string>
+	<string name="donate_mechdome_redreader">Donate MechDome</string>
 
     <!-- 2013-06-07 -->
 

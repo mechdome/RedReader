@@ -36,7 +36,8 @@ import org.quantumbadger.redreader.reddit.api.RedditSubredditSubscriptionManager
 import org.quantumbadger.redreader.reddit.url.PostCommentListingURL;
 import org.quantumbadger.redreader.reddit.url.UserCommentListingURL;
 import org.quantumbadger.redreader.settings.SettingsActivity;
-
+import com.mechdome.aboutmechdome.AboutMechDomeActivity;
+import com.mechdome.aboutmechdome.DonateMechDomeActivity;
 import java.util.EnumSet;
 
 public final class OptionsMenuUtility {
@@ -66,7 +67,9 @@ public final class OptionsMenuUtility {
 		PIN,
 		UNPIN,
 		BLOCK,
-		UNBLOCK
+		UNBLOCK,
+		/*ABOUTMECHDOME,*/
+		DONATEMECHDOME
 	}
 
 	public static <E extends BaseActivity & OptionsMenuListener> void prepare(
@@ -198,6 +201,8 @@ public final class OptionsMenuUtility {
 		if(optionsMenuItemsPrefs.contains(OptionsMenuItemsPref.ACCOUNTS)) add(activity, menu, Option.ACCOUNTS, false);
 		if(optionsMenuItemsPrefs.contains(OptionsMenuItemsPref.THEME)) add(activity, menu, Option.THEMES, false);
 		add(activity, menu, Option.SETTINGS, false);
+//		add(activity, menu, Option.ABOUTMECHDOME, false);
+		add(activity, menu, Option.DONATEMECHDOME, false);
 		if(optionsMenuItemsPrefs.contains(OptionsMenuItemsPref.CLOSE_ALL)) add(activity, menu, Option.CLOSE_ALL, false);
 	}
 
@@ -243,6 +248,27 @@ public final class OptionsMenuUtility {
 					public boolean onMenuItemClick(final MenuItem item) {
 						final Intent intent = new Intent(activity, SettingsActivity.class);
 						activity.startActivityForResult(intent, 1);
+						return true;
+					}
+				});
+				break;
+//			case ABOUTMECHDOME:
+//				String str = activity.getString(R.string.about_mechdome_redreader);
+//				menu.add(str).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+//					public boolean onMenuItemClick(final MenuItem item) {
+//						final Intent intent = new Intent(activity, AboutMechDomeActivity.class);
+//						activity.startActivity(intent);
+//						return true;
+//					}
+//				});
+//				break;
+
+			case DONATEMECHDOME:
+				String str = activity.getString(R.string.about_mechdome_redreader);
+				menu.add(str).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+					public boolean onMenuItemClick(final MenuItem item) {
+						final Intent intent = new Intent(activity, DonateMechDomeActivity.class);
+						activity.startActivity(intent);
 						return true;
 					}
 				});

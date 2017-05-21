@@ -22,7 +22,7 @@
           android:versionName="2.1 1.9.8.3"
           android:installLocation="auto">
 
-    <uses-sdk android:minSdkVersion="14"
+    <uses-sdk android:minSdkVersion="16"
               android:targetSdkVersion="23" />
 
     <uses-feature android:glEsVersion="0x00020000" android:required="true" />
@@ -146,6 +146,12 @@
         <meta-data android:name="com.sec.android.multiwindow.DEFAULT_SIZE_H" android:resource="@dimen/app_defaultsize_h" />
         <meta-data android:name="com.sec.android.multiwindow.MINIMUM_SIZE_W" android:resource="@dimen/app_minimumsize_w" />
         <meta-data android:name="com.sec.android.multiwindow.MINIMUM_SIZE_H" android:resource="@dimen/app_minimumsize_h" />
+
+		<meta-data android:name="md_remove_ads" android:value="com.mechdome.redreader.MechDomeAd" />
+
+		<meta-data android:name="md_donate_small" android:value="com.mechdome.redreader.SmallMechDomeDonation" />
+		<meta-data android:name="md_donate_medium" android:value="com.mechdome.redreader.MediumMechDomeDonation" />
+		<meta-data android:name="md_donate_large" android:value="com.mechdome.redreader.LargeMechDomeDonation" />
 
     </application>
 
