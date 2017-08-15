@@ -123,7 +123,6 @@ public abstract class RedditListingManager {
 	public void setLoadingVisible(final boolean visible) {
 		General.checkThisIsUIThread();
 		mLoadingItem.setHidden(!visible);
-		mAdapter.updateHiddenStatus();
 	}
 
 	public GroupedRecyclerViewAdapter getAdapter() {
