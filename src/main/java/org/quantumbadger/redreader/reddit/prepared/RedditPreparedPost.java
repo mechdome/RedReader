@@ -60,6 +60,7 @@ import org.quantumbadger.redreader.views.bezelmenu.SideToolbarOverlay;
 import org.quantumbadger.redreader.views.bezelmenu.VerticalToolbar;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URI;
 import java.util.*;
 
@@ -154,8 +155,6 @@ public final class RedditPreparedPost {
 		hasThumbnail = showThumbnails && hasThumbnail(post);
 		if(hasThumbnail) {
 			downloadPreview(context, cm, listId);
-		} else {
-			Log.e("Post", "No preview");
 		}
 
 		lastChange = timestamp;
@@ -777,8 +776,13 @@ public final class RedditPreparedPost {
 	public Bitmap getThumbnail(final ThumbnailLoadedCallback callback, final int usageId) {
 		this.thumbnailCallback = callback;
 		this.usageId = usageId;
+
+		if (thumbnailCallback == null || thumbnailCache == null) return null;
+
 		try {
-			return BitmapFactory.decodeStream(thumbnailCache.getInputStream());
+			InputStream is = thumbnailCache.getInputStream();
+			if (is == null) return null;
+			return BitmapFactory.decodeStream(is);
 		} catch (Exception e) {
 			Log.e("RedditPreparedPost", "Error loading image from the cache", e);
 		}
