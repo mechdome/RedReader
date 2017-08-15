@@ -29,7 +29,7 @@ import java.util.List;
 
 public abstract class HTTPBackend {
 
-	private static boolean useJavaBackend = false;
+	private static boolean useJavaBackend = true;
 
 	/**
 	 * Factory method can read configuration information to choose a backend
