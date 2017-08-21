@@ -162,6 +162,11 @@ public class ImageViewActivity extends BaseActivity implements RedditPostView.Po
 		Log.i(TAG, "Loading URL " + mUrl);
 
 		final DonutProgress progressBar = new DonutProgress(this);
+		progressBar.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				ImageViewActivity.this.onBackPressed();
+			}
+		});
 		progressBar.setIndeterminate(true);
 		progressBar.setFinishedStrokeColor(Color.rgb(200, 200, 200));
 		progressBar.setUnfinishedStrokeColor(Color.rgb(50, 50, 50));
