@@ -608,7 +608,7 @@ public final class PrefsUtility {
 			return CachePrecacheImages.NEVER;
 		}
 
-		if(!getBoolean(R.string.pref_cache_precache_images_key, true, context,  sharedPreferences)) {
+		if(!getBoolean(R.string.pref_cache_precache_images_key, false, context,  sharedPreferences)) {
 			return CachePrecacheImages.NEVER;
 		} else if(getBoolean(R.string.pref_cache_precache_images_wifionly_key, true, context, sharedPreferences)) {
 			return CachePrecacheImages.WIFIONLY;
@@ -625,7 +625,7 @@ public final class PrefsUtility {
 
 	public static CachePrecacheComments cache_precache_comments(final Context context, final SharedPreferences sharedPreferences) {
 
-		if(!getBoolean(R.string.pref_cache_precache_comments_key, true, context,  sharedPreferences)) {
+		if(!getBoolean(R.string.pref_cache_precache_comments_key, false, context,  sharedPreferences)) {
 			return CachePrecacheComments.NEVER;
 		} else if(getBoolean(R.string.pref_cache_precache_comments_wifionly_key, false, context, sharedPreferences)) {
 			return CachePrecacheComments.WIFIONLY;

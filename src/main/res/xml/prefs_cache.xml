@@ -36,7 +36,7 @@
 
     <CheckBoxPreference android:title="@string/pref_cache_precache_images_title"
                         android:key="@string/pref_cache_precache_images_key"
-                        android:defaultValue="true"/>
+                        android:defaultValue="false"/>
 
     <CheckBoxPreference android:title="@string/pref_cache_precache_images_wifionly_title"
                         android:key="@string/pref_cache_precache_images_wifionly_key"
@@ -49,7 +49,7 @@
 
         <CheckBoxPreference android:title="@string/pref_cache_precache_comments_title"
                             android:key="@string/pref_cache_precache_comments_key"
-                            android:defaultValue="true"/>
+                            android:defaultValue="false"/>
 
         <CheckBoxPreference android:title="@string/pref_cache_precache_comments_wifionly_title"
                             android:key="@string/pref_cache_precache_comments_wifionly_key"
