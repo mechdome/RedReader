@@ -904,7 +904,7 @@
 	<string name="pref_appearance_link_text_clickable_key" translatable="false">pref_appearance_link_text_clickable</string>
 
 	<!-- 2016-09-07 -->
-	<string name="pref_appearance_hide_android_status_title">Hide Android status bar</string>
+	<string name="pref_appearance_hide_android_status_title">Hide status bar</string>
 	<string name="pref_appearance_hide_android_status_key" translatable="false">pref_appearance_hide_android_status</string>
 
 	<!-- 2016-09-08 -->
